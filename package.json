@@ -14,7 +14,7 @@
     "dev:server": "NODE_ENV=development nodemon --watch src/server --watch .env.development --watch config src/server/index.js --exec babel-node",
     "dev:banking": "NODE_ENV=development nodemon --watch src/banking src/banking/index.js --exec babel-node",
     "dev": "yarn run dev:server & yarn run dev:client",
-    "production": "yarn run build:production && NODE_ENV=production node build/server",
+    "production": "yarn run build:production && yarn start",
     "start": "NODE_ENV=production node build/server | node build/server/logger/transport",
     "lint": "eslint src",
     "test": "yarn lint",
