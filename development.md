@@ -39,5 +39,5 @@ $ yarn dev
 ### production
 
 ```
-$ yarn dev
+$ yarn production
 ```
