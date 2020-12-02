@@ -1,0 +1,80 @@
+{
+  "name": "node-aisp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@gitlab.com:faas-demo/node-aisp.git",
+  "license": "SEE LICENSE IN <filename>",
+  "author": "Danil Kostrov <danil@banfico.com>",
+  "scripts": {
+    "build": "yarn run build:server",
+    "build:package": "tar -czf consent-spa.tar.gz build/ config/ node_modules/ data/ package.json yarn.lock",
+    "build:production": "yarn run build:server:production",
+    "build:server": "NODE_ENV=development ./node_modules/.bin/babel -d build/server src/server",
+    "build:server:production": "NODE_ENV=production ./node_modules/.bin/babel -d build/server src/server",
+    "dev:server": "NODE_ENV=development nodemon --watch src/server --watch .env.development --watch config src/server/index.js --exec babel-node",
+    "dev:banking": "NODE_ENV=development nodemon --watch src/banking src/banking/index.js --exec babel-node",
+    "dev": "yarn run dev:server & yarn run dev:client",
+    "production": "yarn run build:production && NODE_ENV=production node build/server",
+    "start": "NODE_ENV=production node build/server | node build/server/logger/transport",
+    "lint": "eslint src",
+    "test": "yarn lint",
+    "test:flow": "flow src",
+    "test:all": "yarn lint && yarn test:flow"
+  },
+  "pre-commit": {
+    "run": [
+      "lint",
+      "test:flow"
+    ],
+    "colors": false,
+    "silent": false
+  },
+  "flow-coverage-report": {
+    "globIncludePatterns": [
+      "src/**/*.js"
+    ],
+    "globExcludePatterns": [
+      "node_modules/**"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.6.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "eslint": "^6.5.1",
+    "eslint-plugin-async-await": "^0.0.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-flowtype": "^4.3.0",
+    "eslint-plugin-import": "^2.18.2",
+    "flow-bin": "^0.109.0",
+    "flow-runtime": "^0.17.0",
+    "flow-runtime-validators": "^0.17.0",
+    "moment": "^2.24.0",
+    "nodemon": "^1.19.4",
+    "pre-commit": "^1.2.2"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.6.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.2.3",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "express": "^4.17.1",
+    "pino": "^5.14.0",
+    "pino-pretty": "^3.4.0",
+    "process-env": "^1.1.0",
+    "pump": "^3.0.0",
+    "request": "^2.88.0",
+    "split2": "^3.1.1",
+    "through2": "^3.0.1"
+  }
+}

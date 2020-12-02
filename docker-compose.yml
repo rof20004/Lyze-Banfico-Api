@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+
+  node-aisp:
+    image: node-aisp:latest
+    container_name: node-aisp
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:7733/status"]
+      interval: 10s
+      timeout: 60s
+      retries: 3
+      start_period: 1s
+    extra_hosts:
+      - "gw.3scale.banfico.com:${HOST_IP}"
+      - "auth.3scale.banfico.com:${HOST_IP}"
+    environment:
+      PORT: 7733
+      APP_NAME: node-aisp
+      PLATFORM_API: https://gw.3scale.banfico.com
+      PLATFORM_APP_ID: 2c92808775f7d1ac0175f7daa3dc0000
+      PLATFORM_APP_ID_HEADER: x-app-id
+      PLATFORM_APP_USER_HEADER: x-user-id
+      AUTH_CLIENT_ID: fintech-app
+      AUTH_CLIENT_SECRET: password123
+      AUTH_TOKEN_URI: https://auth.3scale.banfico.com/auth/realms/faas/protocol/openid-connect/token
+
+

@@ -1,0 +1,29 @@
+{
+  	"presets": [
+		["@babel/preset-env", {
+			"loose": true,
+			"shippedProposals": true,
+			"useBuiltIns": "entry",
+			"corejs": "2",
+			"targets": {
+				"node": "8.12"
+			}
+		}]
+  	],
+
+  	"plugins": [
+		['babel-plugin-module-resolver', {
+    		root: ['./src'],
+    		alias: {}
+  		}],
+  		"@babel/plugin-transform-flow-strip-types",
+		["@babel/plugin-proposal-class-properties", {
+			loose: true
+		}],
+		"@babel/plugin-syntax-dynamic-import",
+		["@babel/plugin-transform-runtime", {
+			helpers: true,
+			regenerator: true,
+		}]
+  	]
+}
