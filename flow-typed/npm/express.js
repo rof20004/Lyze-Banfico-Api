@@ -31,24 +31,25 @@ declare module 'express' {
     fresh: boolean;
     hostname: string;
     ip: string;
-    ips: Array<string>;
+    ips: Array <string>;
     method: string;
     originalUrl: string;
     params: express$RequestParams;
     path: string;
     protocol: 'https' | 'http';
-    query: {[name: string]: string | Array<string>};
+    query: {[name: string]: string | Array <string>};
+    _parsedUrl: {query: ?string},
     route: string;
     secure: boolean;
     signedCookies: {[signedCookie: string]: string};
     stale: boolean;
-    subdomains: Array<string>;
+    subdomains: Array <string>;
     xhr: boolean;
     accepts(types: string): string | false;
-    accepts(types: Array<string>): string | false;
-    acceptsCharsets(...charsets: Array<string>): string | false;
-    acceptsEncodings(...encoding: Array<string>): string | false;
-    acceptsLanguages(...lang: Array<string>): string | false;
+    accepts(types: Array <string>): string | false;
+    acceptsCharsets(...charsets: Array <string>): string | false;
+    acceptsEncodings(...encoding: Array <string>): string | false;
+    acceptsLanguages(...lang: Array <string>): string | false;
     header(field: string): string | void;
     is(type: string): boolean;
     param(name: string, defaultValue?: string): string | void;
@@ -88,8 +89,8 @@ declare module 'express' {
     jsonp(body?: mixed): this;
     links(links: {[name: string]: string}): this;
     location(path: string): this;
-    redirect(url: string, ...args: Array<void>): this;
-    redirect(status: number, url: string, ...args: Array<void>): this;
+    redirect(url: string, ...args: Array <void>): this;
+    redirect(status: number, url: string, ...args: Array <void>): this;
     render(view: string, locals?: {[name: string]: mixed}, callback?: express$RenderCallback): this;
     send(body?: mixed): this;
     sendFile(path: string, options?: express$SendFileOptions, callback?: (err?: ?Error) => mixed): this;
@@ -106,43 +107,43 @@ declare module 'express' {
 
   declare type express$NextFunction = (err?: ?Error | 'route') => mixed;
   declare type express$Middleware =
-    ((req: $Subtype<express$Request>, res: express$Response, next: express$NextFunction) => mixed);
-    // | ((error: ?Error, req: $Subtype<express$Request>, res: express$Response, next: express$NextFunction) => mixed);
-  declare interface express$RouteMethodType<T> {
+    ((req: $Subtype <express$Request>, res: express$Response, next: express$NextFunction) => mixed);
+    // | ((error: ?Error, req: $Subtype <express$Request>, res: express$Response, next: express$NextFunction) => mixed);
+  declare interface express$RouteMethodType <T> {
     (middleware: express$Middleware): T;
-    (...middleware: Array<express$Middleware>): T;
-    (path: string|RegExp|string[], ...middleware: Array<express$Middleware>): T;
+    (...middleware: Array <express$Middleware>): T;
+    (path: string|RegExp|string[], ...middleware: Array <express$Middleware>): T;
   }
   declare class express$Route {
-    all: express$RouteMethodType<this>;
-    get: express$RouteMethodType<this>;
-    post: express$RouteMethodType<this>;
-    put: express$RouteMethodType<this>;
-    head: express$RouteMethodType<this>;
-    delete: express$RouteMethodType<this>;
-    options: express$RouteMethodType<this>;
-    trace: express$RouteMethodType<this>;
-    copy: express$RouteMethodType<this>;
-    lock: express$RouteMethodType<this>;
-    mkcol: express$RouteMethodType<this>;
-    move: express$RouteMethodType<this>;
-    purge: express$RouteMethodType<this>;
-    propfind: express$RouteMethodType<this>;
-    proppatch: express$RouteMethodType<this>;
-    unlock: express$RouteMethodType<this>;
-    report: express$RouteMethodType<this>;
-    mkactivity: express$RouteMethodType<this>;
-    checkout: express$RouteMethodType<this>;
-    merge: express$RouteMethodType<this>;
+    all: express$RouteMethodType <this>;
+    get: express$RouteMethodType <this>;
+    post: express$RouteMethodType <this>;
+    put: express$RouteMethodType <this>;
+    head: express$RouteMethodType <this>;
+    delete: express$RouteMethodType <this>;
+    options: express$RouteMethodType <this>;
+    trace: express$RouteMethodType <this>;
+    copy: express$RouteMethodType <this>;
+    lock: express$RouteMethodType <this>;
+    mkcol: express$RouteMethodType <this>;
+    move: express$RouteMethodType <this>;
+    purge: express$RouteMethodType <this>;
+    propfind: express$RouteMethodType <this>;
+    proppatch: express$RouteMethodType <this>;
+    unlock: express$RouteMethodType <this>;
+    report: express$RouteMethodType <this>;
+    mkactivity: express$RouteMethodType <this>;
+    checkout: express$RouteMethodType <this>;
+    merge: express$RouteMethodType <this>;
 
     // @TODO Missing 'm-search' but get flow illegal name error.
 
-    notify: express$RouteMethodType<this>;
-    subscribe: express$RouteMethodType<this>;
-    unsubscribe: express$RouteMethodType<this>;
-    patch: express$RouteMethodType<this>;
-    search: express$RouteMethodType<this>;
-    connect: express$RouteMethodType<this>;
+    notify: express$RouteMethodType <this>;
+    subscribe: express$RouteMethodType <this>;
+    unsubscribe: express$RouteMethodType <this>;
+    patch: express$RouteMethodType <this>;
+    search: express$RouteMethodType <this>;
+    connect: express$RouteMethodType <this>;
   }
 
   declare class express$Router extends express$Route {
@@ -150,8 +151,8 @@ declare module 'express' {
     route(path: string): express$Route;
     static (options?: express$RouterOptions): express$Router;
     use(middleware: express$Middleware): this;
-    use(...middleware: Array<express$Middleware>): this;
-    use(path: string|RegExp|string[], ...middleware: Array<express$Middleware>): this;
+    use(...middleware: Array <express$Middleware>): this;
+    use(path: string|RegExp|string[], ...middleware: Array <express$Middleware>): this;
     use(path: string, router: express$Router): this;
     handle(req: http$IncomingMessage <>, res: http$ServerResponse, next: express$NextFunction): void;
 

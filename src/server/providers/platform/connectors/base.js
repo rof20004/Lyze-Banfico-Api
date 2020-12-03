@@ -63,13 +63,13 @@ export default class BaseApi {
 		params: Object
 	) {
 		const {headers = {}} = params;
-		const {userId, requestId} = ctx;
+		const {query, userId, requestId} = ctx;
+
+		params.uri = `${params.uri}${query ? `?${query}` : ''}`;
 
 		headers ['x-user-id'] = userId;
 		headers ['x-app-id'] = this.appId;
 		headers ['x-request-id'] = requestId;
-
-		console.log ('headers', headers);
 
 		return this.authenticator.getToken ()
 			.then ((authorization) => {

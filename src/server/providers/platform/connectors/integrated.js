@@ -20,7 +20,7 @@ const handle404 = (err) => {
 	return Promise.reject (err);
 };
 
-export default class DeveloperApi extends BaseApi {
+export default class IntegratedASPSPsApi extends BaseApi {
 
 	constructor (...args: any) {
 		super (...args);
@@ -72,6 +72,19 @@ export default class DeveloperApi extends BaseApi {
 			.catch (handle404);
 	}
 
+	getAccounts (
+		ctx: RequestCtx,
+		providerId: string
+	) {
+		return this.request (ctx, {
+			uri: `${this.baseUri}/${
+				providerId
+			}/accounts`,
+			method: 'GET'
+		})
+			.catch (handle404);
+	}
+
 	getAccount (
 		ctx: RequestCtx,
 		providerId: string,
@@ -88,8 +101,7 @@ export default class DeveloperApi extends BaseApi {
 			.catch (handle404);
 	}
 
-
-	getBalances (
+	getAccountBalances (
 		ctx: RequestCtx,
 		providerId: string,
 		accountId: string
@@ -105,7 +117,7 @@ export default class DeveloperApi extends BaseApi {
 			.catch (handle404);
 	}
 
-	getTransactions (
+	getAccountTransactions (
 		ctx: RequestCtx,
 		providerId: string,
 		accountId: string

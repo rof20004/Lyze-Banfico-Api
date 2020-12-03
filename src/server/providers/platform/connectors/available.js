@@ -20,7 +20,7 @@ const handle404 = (err) => {
 	return Promise.reject (err);
 };
 
-export default class DeveloperApi extends BaseApi {
+export default class AvailableASPSPsApi extends BaseApi {
 
 	constructor (...args: any) {
 		super (...args);

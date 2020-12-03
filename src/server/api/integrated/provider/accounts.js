@@ -15,29 +15,6 @@ import type {
 
 export default express.Router ({mergeParams: true})
 
-	.get ('/:accountId/transactions', async (
-		req: $Request,
-		res: $Response
-	) => {
-		const {params} = req;
-
-		try {
-			res.json (
-				await integrated.getTransactions (
-					reqCtx (req),
-					params.providerId,
-					params.accountId
-				)
-			);
-		} catch (e) {
-			log.warn (e, 'get integrated account transactions error');
-
-			res.status (e.statusCode || 400).json ({
-				message: e.message
-			});
-		}
-	})
-
 	.get ('/:accountId/balances', async (
 		req: $Request,
 		res: $Response
@@ -46,7 +23,7 @@ export default express.Router ({mergeParams: true})
 
 		try {
 			res.json (
-				await integrated.getBalances (
+				await integrated.getAccountBalances (
 					reqCtx (req),
 					params.providerId,
 					params.accountId
@@ -54,6 +31,29 @@ export default express.Router ({mergeParams: true})
 			);
 		} catch (e) {
 			log.warn (e, 'get integrated account balances error');
+
+			res.status (e.statusCode || 400).json ({
+				message: e.message
+			});
+		}
+	})
+
+	.get ('/:accountId/transactions', async (
+		req: $Request,
+		res: $Response
+	) => {
+		const {params} = req;
+
+		try {
+			res.json (
+				await integrated.getAccountTransactions (
+					reqCtx (req),
+					params.providerId,
+					params.accountId
+				)
+			);
+		} catch (e) {
+			log.warn (e, 'get integrated account transactions error');
 
 			res.status (e.statusCode || 400).json ({
 				message: e.message
@@ -73,6 +73,28 @@ export default express.Router ({mergeParams: true})
 					reqCtx (req),
 					params.providerId,
 					params.accountId
+				)
+			);
+		} catch (e) {
+			log.warn (e, 'get integrated account error');
+
+			res.status (e.statusCode || 400).json ({
+				message: e.message
+			});
+		}
+	})
+
+	.get ('/', async (
+		req: $Request,
+		res: $Response
+	) => {
+		const {params} = req;
+
+		try {
+			res.json (
+				await integrated.getAccounts (
+					reqCtx (req),
+					params.providerId
 				)
 			);
 		} catch (e) {

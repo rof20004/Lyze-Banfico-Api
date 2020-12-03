@@ -10,10 +10,11 @@ import type {
 
 
 export default (
-	{headers}: $Request
+	{_parsedUrl, headers}: $Request
 ): RequestCtx => {
+	const {query} = _parsedUrl;
 	const userId = headers ['x-user-id'];
 	const requestId = headers ['x-request-id'];
 
-	return {userId, requestId};
+	return {query, userId, requestId};
 }

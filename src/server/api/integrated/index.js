@@ -3,8 +3,13 @@
 import log from 'server/logger';
 import express from 'express';
 
-import {integrated} from 'server/providers/platform';
 import reqCtx from 'server/lib/req-ctx';
+
+import {
+	spendings,
+	integrated
+} from 'server/providers/platform';
+
 
 import provider from './provider';
 
@@ -16,6 +21,26 @@ import type {
 
 
 export default express.Router ({mergeParams: true})
+
+	// custom spendings endpoint
+	.get ('/spendings', async (
+		req: $Request,
+		res: $Response
+	) => {
+		try {
+			res.json (
+				await spendings.fromDateRange (
+					reqCtx (req)
+				)
+			);
+		} catch (e) {
+			log.warn (e, 'get integrated providers error');
+
+			res.status (e.statusCode || 400).json ({
+				message: e.message
+			});
+		}
+	})
 
 	.use ('/:providerId', provider)
 

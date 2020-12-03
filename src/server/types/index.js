@@ -1,6 +1,7 @@
 // @flow
 
 export type RequestCtx = {
+	query: ?string,
 	userId: string,
 	requestId: string
 };
