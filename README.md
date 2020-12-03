@@ -1,7 +1,11 @@
-## AISP built on Banfico FaaS
+# 1. AISP on Banfico FaaS
 
 #### Idea
 So you are a fintech and want to build `Open Banking API product`, which will be consumed by your own web or mobile clients or even invite other fintech to subscribe to your API product as a SaaS. Great - let's try to get you quickly build an AISP Product using Banfico's `Fintech as a Service`
+
+#### High Level Architecture
+
+<img src="https://gitlab.com/faas-demo/java-aisp/-/raw/master/docs/FaaS-High-Level.jpg" width="650">
 
 #### Bootstrapping on Banfico FaaS
 Talk to Banfico's team to get a Platform provisioned for you. The platform offers your below functionalities
@@ -16,10 +20,10 @@ We will request you to provide a team or product or organisation name to set up 
 `API first approach` - We recommend you to create API specification for your product first or provide us swagger files post-development.
 
 #### API Product Implementation
-Use this GitLab repository to implement your APIs - in any popular languages ([NodeJS in this instance](development.md)).
+Use this GitLab repository to implement your APIs - in any popular languages (NodeJS in this instance).
 
 #### CI/CD
-We will support you with CI/CD. The GitLab CI/CD is defined here for this Node project. Once the build is successful, it will be deployed on the cloud. The API product will be deployed here - <https://api.faas-demo.faas.orufin.io> #TODO needs update
+We will support you with CI/CD. The GitLab CI/CD is defined here for this Node project. Once the build is successful, it will be deployed on the cloud. The API product will be deployed here - <https://api.faas-demo.faas.orufin.io> `#TODO needs update`
 
 #### API Product publication
 a. Login into API Manager Portal and publish your API product
@@ -29,3 +33,45 @@ c. Consume the API product using your API App; test the APIs on the developer po
 #### Build your Web/Mobile Client
 With API product fully published, tested on the Developer portal, start building your frontend web/mobile clients
 
+# 2. Node-AISP Build
+
+## docker-compose
+
+#### build
+
+```
+$ ./scripts/bootstrap.sh
+```
+
+#### start
+
+```
+$ ./scripts/start.sh
+
+```
+
+#### stop
+
+```
+$ ./scripts/stop.sh
+```
+
+## development
+
+#### install
+
+```
+$ yarn
+```
+
+#### dev livereload
+
+```
+$ yarn dev
+```
+
+#### production
+
+```
+$ yarn production
+```
