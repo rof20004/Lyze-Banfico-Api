@@ -73,6 +73,26 @@ export default class IntegratedASPSPsApi extends BaseApi {
 	}
 
 	getAccounts (
+		ctx: RequestCtx
+	) {
+		return this.request (ctx, {
+			uri: `${this.baseUri}/accounts`,
+			method: 'GET'
+		})
+			.catch (handle404);
+	}
+
+	getTransactions (
+		ctx: RequestCtx
+	) {
+		return this.request (ctx, {
+			uri: `${this.baseUri}/transactions`,
+			method: 'GET'
+		})
+			.catch (handle404);
+	}
+
+	getProviderAccounts (
 		ctx: RequestCtx,
 		providerId: string
 	) {
@@ -85,7 +105,20 @@ export default class IntegratedASPSPsApi extends BaseApi {
 			.catch (handle404);
 	}
 
-	getAccount (
+	getProviderTransactions (
+		ctx: RequestCtx,
+		providerId: string
+	) {
+		return this.request (ctx, {
+			uri: `${this.baseUri}/${
+				providerId
+			}/transactions`,
+			method: 'GET'
+		})
+			.catch (handle404);
+	}
+
+	getProviderAccount (
 		ctx: RequestCtx,
 		providerId: string,
 		accountId: string
@@ -101,7 +134,7 @@ export default class IntegratedASPSPsApi extends BaseApi {
 			.catch (handle404);
 	}
 
-	getAccountBalances (
+	getProviderAccountBalances (
 		ctx: RequestCtx,
 		providerId: string,
 		accountId: string
@@ -117,7 +150,7 @@ export default class IntegratedASPSPsApi extends BaseApi {
 			.catch (handle404);
 	}
 
-	getAccountTransactions (
+	getProviderAccountTransactions (
 		ctx: RequestCtx,
 		providerId: string,
 		accountId: string

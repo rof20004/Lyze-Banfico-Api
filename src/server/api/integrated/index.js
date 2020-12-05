@@ -12,6 +12,8 @@ import {
 
 
 import provider from './provider';
+import accounts from './accounts';
+import transactions from './transactions';
 
 
 import type {
@@ -34,13 +36,17 @@ export default express.Router ({mergeParams: true})
 				)
 			);
 		} catch (e) {
-			log.warn (e, 'get integrated providers error');
+			log.warn (e, 'get spendings error');
 
 			res.status (e.statusCode || 400).json ({
 				message: e.message
 			});
 		}
 	})
+
+	.use ('/accounts', accounts)
+	.use ('/transactions', transactions)
+
 
 	.use ('/:providerId', provider)
 

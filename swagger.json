@@ -1,0 +1,717 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Aggregator API specification",
+        "version": "1.0",
+        "title": "Aggregator API specification",
+        "termsOfService": "urn:tos",
+        "contact": {
+            "name": "Service Desk",
+            "email": "servicedesk@banfico.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
+    },
+    "host": "gw.3scale.banfico.com",
+    "basePath": "/<user-namespace>/<apiname-namespace>/api/providers",
+    "tags": [
+        {
+            "name": "Available ASPSPs",
+            "description": "Available ASPSPs"
+        },
+        {
+            "name": "Integrated ASPSPs",
+            "description": "Integrated ASPSPs"
+        },
+        {
+            "name": "Integrated ASPSPs Data",
+            "description": "Integrated ASPSPs Data"
+        }
+    ],
+    "paths": {
+        "/available": {
+            "get": {
+                "tags": [
+                    "Available ASPSPs"
+                ],
+                "summary": "Get Available ASPSPs",
+                "operationId": "GetAvailableASPSPs",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated": {
+            "get": {
+                "tags": [
+                    "Integrated ASPSPs"
+                ],
+                "summary": "Get Integrated ASPSPs",
+                "operationId": "GetIntegratedASPSPs",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated/{aspspId}": {
+            "get": {
+                "tags": [
+                    "Integrated ASPSPs"
+                ],
+                "summary": "Get Integrated ASPSP",
+                "operationId": "GetIntegratedASPSP",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/AspspId"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Integrated ASPSPs"
+                ],
+                "summary": "Integrate ASPSP",
+                "operationId": "IntegratedASPSP",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/AspspId"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Integrated ASPSPs"
+                ],
+                "summary": "Remove connected ASPSP",
+                "operationId": "RemoveConnectedASPSP",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/AspspId"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated/accounts": {
+            "get": {
+                "tags": [
+                    "Integrated ASPSPs Data"
+                ],
+                "summary": "Get All Integrated ASPSPs Accounts",
+                "operationId": "GetIntegratedASPSPsAccounts",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated/transactions": {
+            "get": {
+                "tags": [
+                    "Integrated ASPSPs Data"
+                ],
+                "summary": "Get All Integrated ASPSPs Transactions",
+                "operationId": "GetIntegratedASPSPsTransactions",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/FromDateParam"
+                    },
+                    {
+                        "$ref": "#/parameters/ToDateParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated/{aspspId}/accounts": {
+            "get": {
+                "tags": [
+                    "Integrated ASPSPs Data"
+                ],
+                "summary": "Get Integrated ASPSP Accounts",
+                "operationId": "GetIntegratedASPSPAccounts",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/AspspId"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated/{aspspId}/accounts/{accountId}": {
+            "get": {
+                "tags": [
+                    "Integrated ASPSPs Data"
+                ],
+                "summary": "Get Integrated ASPSP Account",
+                "operationId": "GetIntegratedASPSPAccount",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/AspspId"
+                    },
+                    {
+                        "$ref": "#/parameters/AccountId"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated/{aspspId}/accounts/{accountId}/balances": {
+            "get": {
+                "tags": [
+                    "Integrated ASPSPs Data"
+                ],
+                "summary": "Get Integrated ASPSP Balances",
+                "operationId": "GetIntegratedASPSPBalances",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/AspspId"
+                    },
+                    {
+                        "$ref": "#/parameters/AccountId"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated/{aspspId}/accounts/{accountId}/transactions": {
+            "get": {
+                "tags": [
+                    "Integrated ASPSPs Data"
+                ],
+                "summary": "Get Integrated ASPSP Transactions",
+                "operationId": "GetIntegratedASPSPTransactions",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/AspspId"
+                    },
+                    {
+                        "$ref": "#/parameters/AccountId"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        }
+    },
+    "responses": {
+        "200Response": {
+            "description": "OK"
+        },
+        "400ErrorResponse": {
+            "description": "Bad request"
+        },
+        "401ErrorResponse": {
+            "description": "Unauthorized"
+        },
+        "403ErrorResponse": {
+            "description": "Forbidden"
+        },
+        "404ErrorResponse": {
+            "description": "Not found"
+        },
+        "405ErrorResponse": {
+            "description": "Method Not Allowed"
+        },
+        "406ErrorResponse": {
+            "description": "Not Acceptable"
+        },
+        "415ErrorResponse": {
+            "description": "Unsupported Media Type"
+        },
+        "429ErrorResponse": {
+            "description": "Too Many Requests",
+            "headers": {
+                "Retry-After": {
+                    "description": "Number in seconds to wait",
+                    "type": "integer"
+                }
+            }
+        },
+        "500ErrorResponse": {
+            "description": "Internal Server Error"
+        }
+    },
+    "parameters": {
+        "AspspId": {
+            "in": "path",
+            "name": "aspspId",
+            "type": "string",
+            "required": true,
+            "description": "ASPSP Id"
+        },
+        "XAppIdParam": {
+            "in": "header",
+            "name": "x-app-id",
+            "type": "string",
+            "required": true,
+            "description": "Platform Fintech App Identificator"
+        },
+        "XUserIdParam": {
+            "in": "header",
+            "name": "x-user-id",
+            "type": "string",
+            "required": true,
+            "description": "Fintech App User Identificator"
+        },
+        "AuthorizationParam": {
+            "in": "header",
+            "name": "Authorization",
+            "type": "string",
+            "required": true,
+            "description": "An Authorisation Token as per https://tools.ietf.org/html/rfc6750"
+        },
+        "FromDateParam": {
+            "in": "query",
+            "name": "from",
+            "type": "string",
+            "required": false,
+            "description": "Date in YYYY-MM-dd format"
+        },
+        "ToDateParam": {
+            "in": "query",
+            "name": "to",
+            "type": "string",
+            "required": false,
+            "description": "Date in YYYY-MM-dd format"
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {
+        "PlatformOAuth2Security": {
+            "type": "oauth2",
+            "flow": "application",
+            "tokenUrl": "https://auth.faas.orufin.io/auth/realms/faas/protocol/openid-connect/token",
+            "scopes": {},
+            "description": "Client credential authorisation flow with the Aggregation Platfrom"
+        }
+    }
+}

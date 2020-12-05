@@ -23,7 +23,7 @@ export default express.Router ({mergeParams: true})
 
 		try {
 			res.json (
-				await integrated.getAccountBalances (
+				await integrated.getProviderAccountBalances (
 					reqCtx (req),
 					params.providerId,
 					params.accountId
@@ -46,7 +46,7 @@ export default express.Router ({mergeParams: true})
 
 		try {
 			res.json (
-				await integrated.getAccountTransactions (
+				await integrated.getProviderAccountTransactions (
 					reqCtx (req),
 					params.providerId,
 					params.accountId
@@ -69,7 +69,7 @@ export default express.Router ({mergeParams: true})
 
 		try {
 			res.json (
-				await integrated.getAccount (
+				await integrated.getProviderAccount (
 					reqCtx (req),
 					params.providerId,
 					params.accountId
@@ -92,7 +92,7 @@ export default express.Router ({mergeParams: true})
 
 		try {
 			res.json (
-				await integrated.getAccounts (
+				await integrated.getProviderAccounts (
 					reqCtx (req),
 					params.providerId
 				)

@@ -1,10 +1,6 @@
 .DS_Store
+*.log
 
 build
 node_modules
 
-*.log
-src/index.html
-
-.idea/
-.DS_Store
