@@ -7,16 +7,12 @@ COPY yarn.lock .
 COPY package.json .
 RUN yarn --frozen-lockfile --ignore-optional
 
-COPY data data
+#COPY data data
 COPY config config
 COPY .babelrc .babelrc
 
 COPY src/server src/server
 RUN yarn run build:server:production
-
-COPY scripts scripts
-COPY src src
-RUN yarn run build:client:production
 
 
 FROM node:10.22-alpine
@@ -35,7 +31,7 @@ COPY package.json .
 RUN yarn --production=true --pure-lockfile --ignore-optional && yarn cache clean
 
 COPY config config
-COPY --from=builder /usr/src/app/data ./data
+#COPY --from=builder /usr/src/app/data ./data
 COPY --from=builder /usr/src/app/build ./build
 
 USER root
