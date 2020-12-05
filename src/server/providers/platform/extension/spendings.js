@@ -19,9 +19,13 @@ export default class SpendingsApi extends IntegratedASPSPsApi {
 
 		log.info ({transactions}, 'aggregated transactions list');
 
-		// TODO: check debit / credit, sum the debit transactions
+		const {booked = []} = transactions;
 
-		return transactions;
+		const value = booked.reduce ((res, {
+			transactionAmount: entry
+		}) => res + ((entry && entry.amount) || 0), 0)
+
+		return {value};
 	}
 
 }
