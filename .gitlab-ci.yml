@@ -48,4 +48,4 @@ deploy-app:
     - oc new-app $NEW_APP_OPTS --name ${APP} -i ${APP} -e APP_NAME=${APP_NAME} -e AUTH_CLIENT_ID=${AUTH_CLIENT_ID} -e AUTH_CLIENT_SECRET=${AUTH_CLIENT_SECRET} -e AUTH_TOKEN_URI=${AUTH_TOKEN_URI} -e PLATFORM_API=${PLATFORM_API} -e PLATFORM_APP_ID=${PLATFORM_APP_ID} -e PLATFORM_APP_ID_HEADER=${PLATFORM_APP_ID_HEADER} -e PLATFORM_APP_USER_HEADER=${PLATFORM_APP_USER_HEADER} -e PORT=${PORT}
     #- oc set sa dc/${APP} $SVCACCOUNT
     #- oc create route edge $APP --service $APP --cert $TLS_CERT --key $TLS_KEY --hostname ${APP}.${BASEDOMAIN} --insecure-policy=Redirect || true
-    - oc create route edge $APP --service $APP --hostname ${APP}.${BASEDOMAIN} --insecure-policy=Redirect || true
+    #- oc create route edge $APP --service $APP --hostname ${APP}.${BASEDOMAIN} --insecure-policy=Redirect || true
