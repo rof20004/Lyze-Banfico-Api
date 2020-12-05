@@ -15,7 +15,7 @@
         }
     },
     "host": "gw.3scale.banfico.com",
-    "basePath": "/<user-namespace>/<apiname-namespace>/api/providers",
+    "basePath": "/<publisher-namespace>/<api-namespace>/api/providers",
     "tags": [
         {
             "name": "Available ASPSPs",
@@ -28,6 +28,10 @@
         {
             "name": "Integrated ASPSPs Data",
             "description": "Integrated ASPSPs Data"
+        },
+        {
+            "name": "Spendings ASPSPs Data",
+            "description": "Spendings ASPSPs Data"
         }
     ],
     "paths": {
@@ -569,14 +573,71 @@
                 "tags": [
                     "Integrated ASPSPs Data"
                 ],
-                "summary": "Get Integrated ASPSP Transactions",
-                "operationId": "GetIntegratedASPSPTransactions",
+                "summary": "Get Integrated ASPSPs Transactions",
+                "operationId": "GetIntegratedASPSPsTransactions",
                 "parameters": [
                     {
                         "$ref": "#/parameters/AspspId"
                     },
                     {
                         "$ref": "#/parameters/AccountId"
+                    },
+                    {
+                        "$ref": "#/parameters/XAppIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/XUserIdParam"
+                    },
+                    {
+                        "$ref": "#/parameters/AuthorizationParam"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#/responses/200Response"
+                    },
+                    "400": {
+                        "$ref": "#/responses/400ErrorResponse"
+                    },
+                    "401": {
+                        "$ref": "#/responses/401ErrorResponse"
+                    },
+                    "403": {
+                        "$ref": "#/responses/403ErrorResponse"
+                    },
+                    "405": {
+                        "$ref": "#/responses/405ErrorResponse"
+                    },
+                    "406": {
+                        "$ref": "#/responses/406ErrorResponse"
+                    },
+                    "429": {
+                        "$ref": "#/responses/429ErrorResponse"
+                    },
+                    "500": {
+                        "$ref": "#/responses/500ErrorResponse"
+                    }
+                },
+                "security": [
+                    {
+                        "PlatformOAuth2Security": []
+                    }
+                ]
+            }
+        },
+        "/integrated/spendings": {
+            "get": {
+                "tags": [
+                    "Spendings ASPSPs Data"
+                ],
+                "summary": "Get All Integrated ASPSPs Spendings",
+                "operationId": "GetIntegratedASPSPsSpendings",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/FromDateParam"
+                    },
+                    {
+                        "$ref": "#/parameters/ToDateParam"
                     },
                     {
                         "$ref": "#/parameters/XAppIdParam"

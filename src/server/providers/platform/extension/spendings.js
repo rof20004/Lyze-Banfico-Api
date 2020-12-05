@@ -14,16 +14,15 @@ export default class SpendingsApi extends IntegratedASPSPsApi {
 	async fromDateRange (
 		ctx: RequestCtx
 	) {
-		// eslint-disable-next-line no-unused-vars
 		const {transactions} = await this.getTransactions (ctx);
 
 		log.info ({transactions}, 'aggregated transactions list');
 
 		const {booked = []} = transactions;
-
 		const value = booked.reduce ((res, {
 			transactionAmount: entry
-		}) => res + ((entry && entry.amount) || 0), 0)
+		}) => res + ((entry && entry.amount) || 0), 0);
+
 
 		return {value};
 	}
