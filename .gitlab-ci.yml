@@ -1,0 +1,51 @@
+# OpenShift 4.x CI/CD 
+#
+# Daniel Webster
+# dsw@cloudbusting.io
+#
+
+stages:
+ - build
+ - deploy
+
+variables:
+  REGISTRY: image-registry.openshift-image-registry.svc:5000
+  OPENSHIFT: api.faas.orufin.io:6443
+  STORAGECLASS: gp2
+  BASEDOMAIN: faas.orufin.io
+  OPENSHIFT_CLIENT_IMAGE: cloudbusting/okd4-client
+  GITSSL_NO_VERIFY: "true"
+  GIT_SUBMODULE_STRATEGY: normal
+  DOCKER_DRIVER: vfs
+  NEW_APP_OPTS: "--as-deployment-config=true"
+
+  PROJECT: faas
+  APP: node-aisp
+  IMAGE: $REGISTRY/$PROJECT/$APP
+  PVCNAME: $APP
+  HOSTNAME: ${APP}.${BASEDOMAIN}
+  SVCACCOUNT: faas-admin
+  PVSIZE: 5Gi
+
+build-app:
+  image: tomkukral/buildah
+  stage: build
+  script:
+    - podman login -u builder -p $BUILDER_TOKEN $REGISTRY --tls-verify=false
+    - podman pull --tls-verify=false $IMAGE:latest || true
+    - buildah bud -t $IMAGE:latest -f Dockerfile .
+    - podman push --tls-verify=false $IMAGE:latest
+
+deploy-app:
+  image: cloudbusting/okd4-client
+  stage: deploy
+  script:
+    # Give DB time to come up. FIXME: replace this with proper dependencies
+    - oc login --token $ADMIN_TOKEN $OPENSHIFT --insecure-skip-tls-verify=true
+    - oc project $PROJECT
+    - oc delete all -lapp=${APP}
+    # For some reason, new-app doesn't like the full imagestream path, but the shorthand works.
+    - oc new-app $NEW_APP_OPTS --name ${APP} -i ${APP} -e APP_NAME=${APP_NAME} -e AUTH_CLIENT_ID=${AUTH_CLIENT_ID} -e AUTH_CLIENT_SECRET=${AUTH_CLIENT_SECRET} -e AUTH_TOKEN_URI=${AUTH_TOKEN_URI} -e PLATFORM_API=${PLATFORM_API} -e PLATFORM_APP_ID=${PLATFORM_APP_ID} -e PLATFORM_APP_ID_HEADER=${PLATFORM_APP_ID_HEADER} -e PLATFORM_APP_USER_HEADER=${PLATFORM_APP_USER_HEADER} -e PORT=${PORT}
+    #- oc set sa dc/${APP} $SVCACCOUNT
+    #- oc create route edge $APP --service $APP --cert $TLS_CERT --key $TLS_KEY --hostname ${APP}.${BASEDOMAIN} --insecure-policy=Redirect || true
+    - oc create route edge $APP --service $APP --hostname ${APP}.${BASEDOMAIN} --insecure-policy=Redirect || true
