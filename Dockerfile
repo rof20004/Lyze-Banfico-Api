@@ -38,7 +38,7 @@ USER root
 
 USER node
 
-EXPOSE 8330
+EXPOSE 7733
 
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 CMD ["yarn", "start"]
