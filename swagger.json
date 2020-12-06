@@ -15,7 +15,7 @@
         }
     },
     "host": "gw.3scale.banfico.com",
-    "basePath": "/<publisher-namespace>/<api-namespace>/api/providers",
+    "basePath": "/pritish-api-banfico-com/node-aisp/api/providers",
     "tags": [
         {
             "name": "Available ASPSPs",
@@ -574,7 +574,7 @@
                     "Integrated ASPSPs Data"
                 ],
                 "summary": "Get Integrated ASPSPs Transactions",
-                "operationId": "GetIntegratedASPSPsTransactions",
+                "operationId": "GetIntegratedASPSPsTransactionsByAccountId",
                 "parameters": [
                     {
                         "$ref": "#/parameters/AspspId"
@@ -729,6 +729,13 @@
             "required": true,
             "description": "ASPSP Id"
         },
+        "AccountId": {
+            "in": "path",
+            "name": "accountId",
+            "type": "string",
+            "required": true,
+            "description": "Account Id"
+        },
         "XAppIdParam": {
             "in": "header",
             "name": "x-app-id",
@@ -770,7 +777,7 @@
         "PlatformOAuth2Security": {
             "type": "oauth2",
             "flow": "application",
-            "tokenUrl": "https://auth.faas.orufin.io/auth/realms/faas/protocol/openid-connect/token",
+            "tokenUrl": "https://auth.lyze.faas.orufin.io/auth/realms/faas/protocol/openid-connect/token",
             "scopes": {},
             "description": "Client credential authorisation flow with the Aggregation Platfrom"
         }

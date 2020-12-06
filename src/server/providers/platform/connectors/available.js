@@ -25,9 +25,8 @@ export default class AvailableASPSPsApi extends BaseApi {
 	constructor (...args: any) {
 		super (...args);
 
-		this.baseUri = `${
-			this.baseUri
-		}/api/providers/available`;
+		this.baseUri = `${this.baseUri
+			}/api/providers/available`;
 	}
 
 	list (ctx: RequestCtx) {
