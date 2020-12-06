@@ -22,6 +22,8 @@ We will request you to provide a team or product or organisation name to set up 
 #### API Product Implementation
 Use this GitLab repository to implement your APIs - in any popular languages (NodeJS in this instance).
 
+[Gitlab Original Project](https://gitlab.com/ob-brazil-hackathon/lyze)
+
 #### CI/CD
 We will support you with CI/CD. The GitLab CI/CD is defined here for this Node project. Once the build is successful, it will be deployed on the cloud. The API product will be deployed here - <https://api.faas-demo.faas.orufin.io> `#TODO needs update`
 
